@@ -1,8 +1,8 @@
-package simulation;
+package simulation.map;
 
 import java.util.Objects;
 
-public class Cell {
+class Cell {
     private final int row;
     private final int column;
 

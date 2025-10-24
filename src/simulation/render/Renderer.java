@@ -1,6 +1,6 @@
 package simulation.render;
 
-import simulation.GameMap;
+import simulation.map.GameMap;
 
 public interface Renderer {
     void render(GameMap gameMap);

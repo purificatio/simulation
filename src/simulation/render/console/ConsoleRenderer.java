@@ -1,11 +1,12 @@
 package simulation.render.console;
 
-import simulation.GameMap;
+import simulation.map.GameMap;
 import simulation.Simulation;
 import simulation.entities.Entity;
 import simulation.render.Renderer;
 
 public class ConsoleRenderer implements Renderer {
+    private final String border = "=".repeat(Simulation.MAP_WIDTH * 3);
     @Override
     public void render(GameMap gameMap) {
         StringBuilder mapState = new StringBuilder();
@@ -16,13 +17,29 @@ public class ConsoleRenderer implements Renderer {
             }
             mapState.append("\n");
         }
-        System.out.print(mapState);
+        mapState.append(border);
+        System.out.println(mapState);
     }
 
     public Sprites getSprite(Entity entity) {
         switch (entity.getClass().getSimpleName()){
             case ("Nothing") -> {
                 return Sprites.NOTHING;
+            }
+            case ("Herbivore") -> {
+                return Sprites.HERBIVORE;
+            }
+            case ("Predator") -> {
+                return Sprites.PREDATOR;
+            }
+            case ("Grass") -> {
+                return Sprites.GRASS;
+            }
+            case ("Rock") -> {
+                return Sprites.ROCK;
+            }
+            case ("Tree") -> {
+                return Sprites.TREE;
             }
             default -> {
                 throw new IllegalArgumentException("Unclassified entity");

@@ -1,4 +1,4 @@
-package simulation;
+package simulation.map;
 
 import simulation.entities.Entity;
 
@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class GameMap {
     private final Map<Cell, Entity> gameMap;
-    GameMap(Map<Cell, Entity> gameMap){
+    public GameMap(Map<Cell, Entity> gameMap){
         this.gameMap = gameMap;
     }
 

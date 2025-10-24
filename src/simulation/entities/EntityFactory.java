@@ -7,13 +7,16 @@ import simulation.entities.terrainobjects.Rock;
 import simulation.entities.terrainobjects.Tree;
 
 public class EntityFactory {
-    public static Entity createEntity(EntityType entityType) {
+    private final int HERBIVORE_HP = 4;
+    private final int PREDATOR_HP = 6;
+    private final int PREDATOR_DAMAGE = 2;
+    public Entity createEntity(EntityType entityType) {
         switch (entityType) {
             case HERBIVORE -> {
-                return new Herbivore();
+                return new Herbivore(HERBIVORE_HP);
             }
             case PREDATOR -> {
-                return new Predator();
+                return new Predator(PREDATOR_HP, PREDATOR_DAMAGE);
             }
             case GRASS -> {
                 return new Grass();
