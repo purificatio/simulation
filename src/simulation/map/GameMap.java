@@ -1,6 +1,8 @@
 package simulation.map;
 
+import simulation.Simulation;
 import simulation.entities.Entity;
+import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
 
 import java.util.ArrayList;
@@ -9,8 +11,10 @@ import java.util.Map;
 
 public class GameMap {
     private final Map<Cell, Entity> gameMap;
-    public GameMap(Map<Cell, Entity> gameMap){
+    private final EntityFactory entityFactory;
+    public GameMap(Map<Cell, Entity> gameMap, EntityFactory entityFactory){
         this.gameMap = gameMap;
+        this.entityFactory = entityFactory;
     }
 
     public void setEntity(Cell cell, Entity entity){
@@ -22,6 +26,15 @@ public class GameMap {
             throw new IllegalArgumentException("Incorrect cell");
         }
         return gameMap.get(cell);
+    }
+
+    public void moveEntity(Cell from, Cell to){
+        if(!getEntity(to).isPassability()){
+            throw new IllegalArgumentException("Cell already taken by no passability entity");
+        }
+        Entity entity = getEntity(from);
+        setEntity(to, entity);
+        setEntity(from, entityFactory.createEntity(Simulation.DEFAULT_ENTITY_TYPE));
     }
 
     public List<Cell> getEntityPositions(List<Class<?>> targetEntities){

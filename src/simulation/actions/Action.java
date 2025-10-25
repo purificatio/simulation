@@ -11,7 +11,5 @@ public abstract class Action {
         this.entityFactory = entityFactory;
     };
 
-
-
     public abstract void execute();
 }

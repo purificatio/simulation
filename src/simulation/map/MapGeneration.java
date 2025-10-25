@@ -3,8 +3,6 @@ package simulation.map;
 import simulation.Simulation;
 import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
-import simulation.entities.EntityType;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -19,7 +17,7 @@ public class MapGeneration {
         for(int row = 1; row <= Simulation.MAP_HEIGHT; row++){
             for(int column = 1; column <= Simulation.MAP_WIDTH; column++){
                 Cell cell = new Cell(row, column);
-                map.put(cell, entityFactory.createEntity(EntityType.NOTHING));
+                map.put(cell, entityFactory.createEntity(Simulation.DEFAULT_ENTITY_TYPE));
             }
         }
         return map;

@@ -5,13 +5,7 @@ import simulation.entities.creatures.Predator;
 import simulation.entities.supplies.Grass;
 import simulation.entities.terrainobjects.Rock;
 import simulation.entities.terrainobjects.Tree;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class EntityFactory {
-
-
     public Entity createEntity(EntityType entityType) {
         switch (entityType) {
             case HERBIVORE -> {
