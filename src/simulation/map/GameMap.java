@@ -3,7 +3,6 @@ package simulation.map;
 import simulation.Simulation;
 import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
-import simulation.entities.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
