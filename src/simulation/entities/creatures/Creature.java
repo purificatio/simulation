@@ -8,7 +8,7 @@ import java.util.List;
 
 public abstract class Creature extends Entity {
     protected int healthPoints;
-    public final List<Class<?>> targetEntities;
+    public final List<EntityType> targetEntities;
     private static final boolean CREATURE_PASSABILITY = false;
     Creature(){
         super(CREATURE_PASSABILITY);

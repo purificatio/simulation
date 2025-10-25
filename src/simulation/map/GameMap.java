@@ -3,6 +3,7 @@ package simulation.map;
 import simulation.Simulation;
 import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
+import simulation.entities.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +37,13 @@ public class GameMap {
         setEntity(from, entityFactory.createEntity(Simulation.DEFAULT_ENTITY_TYPE));
     }
 
-    public List<Cell> getEntityPositions(List<Class<?>> targetEntities){
+    public List<Cell> getEntityPositions(List<EntityType> targetEntities){
         List<Cell> positions = new ArrayList<>();
         for(Map.Entry<Cell, Entity> cellEntityEntry : gameMap.entrySet()){
             Entity entity = cellEntityEntry.getValue();
-            for(Class<?> entityType : targetEntities) {
-                if (entityType.isInstance(entity)){
+            for(EntityType entityType : targetEntities) {
+                Class<?> entityClass = entityType.getEntityClass();
+                if (entityClass.isInstance(entity)){
                     positions.add(cellEntityEntry.getKey());
                     break;
                 }

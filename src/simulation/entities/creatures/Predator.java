@@ -13,7 +13,7 @@ public class Predator extends Creature{
     public Predator() {
         this.healthPoints = DEFAULT_PREDATOR_HEALTH_POINTS;
         this.damage = DEFAULT_PREDATOR_DAMAGE;
-        targetEntities.add(Herbivore.class);
+        targetEntities.add(EntityType.HERBIVORE);
     }
 
     public int getDamage(){
