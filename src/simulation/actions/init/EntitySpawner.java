@@ -3,6 +3,7 @@ package simulation.actions.init;
 import simulation.Simulation;
 import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
+import simulation.map.Cell;
 import simulation.map.GameMap;
 
 import java.util.*;
@@ -21,6 +22,14 @@ public class EntitySpawner extends InitAction {
         entityCounts.put(EntityType.TREE, getEntityCount(EntityPercent.TREE.getPercent()));
     }
 
+    private int getEntityCount(int percent){
+        int count = (int) ((percent / 100.0) * Simulation.MAP_SIZE);
+        if(count < 1 && percent != 0) {
+            count = 1;
+        }
+        return count;
+    }
+
     @Override
     public void execute() {
         if(!isMapSizeEnough()){
@@ -30,25 +39,6 @@ public class EntitySpawner extends InitAction {
         for(Map.Entry<EntityType, Integer> entityCount : entityCounts.entrySet()){
             spawn(entityCount.getKey(), entityCount.getValue());
         }
-    }
-
-    private void spawn(EntityType entityType, int count){
-        int iteration = 0;
-        while(iteration != count) {
-            int cellIndex = random.nextInt(cells.size());
-            Cell cell = cells.get(cellIndex);
-            gameMap.setEntity(cell.row, cell.column, entityFactory.createEntity(entityType));
-            cells.remove(cellIndex);
-            iteration++;
-        }
-    }
-
-    private int getEntityCount(int percent){
-        int count = (int) ((percent / 100.0) * Simulation.MAP_SIZE);
-        if(count < 1 && percent != 0) {
-            count = 1;
-        }
-        return count;
     }
 
     private boolean isMapSizeEnough(){
@@ -68,12 +58,14 @@ public class EntitySpawner extends InitAction {
         }
     }
 
-    private static class Cell {
-        int row;
-        int column;
-        Cell(int row, int column){
-            this.row = row;
-            this.column = column;
+    private void spawn(EntityType entityType, int count){
+        int iteration = 0;
+        while(iteration != count) {
+            int cellIndex = random.nextInt(cells.size());
+            Cell cell = cells.get(cellIndex);
+            gameMap.setEntity(cell, entityFactory.createEntity(entityType));
+            cells.remove(cellIndex);
+            iteration++;
         }
     }
 }

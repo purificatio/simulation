@@ -2,7 +2,7 @@ package simulation.map;
 
 import java.util.Objects;
 
-class Cell {
+public class Cell {
     private final int row;
     private final int column;
 

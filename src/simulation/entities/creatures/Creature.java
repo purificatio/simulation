@@ -1,13 +1,18 @@
 package simulation.entities.creatures;
 
 import simulation.entities.Entity;
+import simulation.entities.EntityType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Creature extends Entity {
-    private int healthPoints;
-    Creature(int healthPoints){
-        this.healthPoints = healthPoints;
+    protected int healthPoints;
+    public final List<Class<?>> targetEntities;
+    private static final boolean CREATURE_PASSABILITY = false;
+    Creature(){
+        super(CREATURE_PASSABILITY);
+        this.targetEntities = new ArrayList<>();
     }
 
     public void makeMove(){

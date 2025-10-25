@@ -5,7 +5,11 @@ import simulation.actions.Action;
 import simulation.actions.init.EntitySpawner;
 import simulation.actions.init.InitAction;
 import simulation.actions.turn.TurnAction;
+import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
+import simulation.entities.EntityType;
+import simulation.entities.creatures.Herbivore;
+import simulation.map.Cell;
 import simulation.map.GameMap;
 import simulation.map.MapGeneration;
 import simulation.render.console.ConsoleRenderer;
@@ -21,22 +25,22 @@ public class Simulation {
     private final GameMap gameMap;
     private final Renderer renderer;
     private final EntityFactory entityFactory;
+    private final MapGeneration mapGeneration;
     public final List<InitAction> initActions = new ArrayList<>();
     public final List<TurnAction> turnActions = new ArrayList<>();
 
     Simulation(){
         this.entityFactory = new EntityFactory();
-        MapGeneration mapGeneration = new MapGeneration(entityFactory);
+        this.mapGeneration = new MapGeneration(entityFactory);
         this.gameMap = new GameMap(mapGeneration.generate());
         this.renderer = new ConsoleRenderer();
         initActions.add(new EntitySpawner(gameMap, entityFactory));
     }
 
-    public void startSimulation(){
+    public void start() {
         executeActions(initActions);
         renderer.render(gameMap);
     }
-
     private void nextTurn(){
 
     }

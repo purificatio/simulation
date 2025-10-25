@@ -4,7 +4,7 @@ import simulation.entities.Entity;
 import simulation.entities.creatures.Herbivore;
 
 public enum Sprites {
-    NOTHING("⬜"),
+    NOTHING("🟫"),
     HERBIVORE("🐄"),
     PREDATOR("🦁"),
     ROCK("🪨"),

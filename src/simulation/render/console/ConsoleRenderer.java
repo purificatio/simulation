@@ -1,5 +1,6 @@
 package simulation.render.console;
 
+import simulation.map.Cell;
 import simulation.map.GameMap;
 import simulation.Simulation;
 import simulation.entities.Entity;
@@ -12,7 +13,8 @@ public class ConsoleRenderer implements Renderer {
         StringBuilder mapState = new StringBuilder();
         for(int row = 1; row <= Simulation.MAP_HEIGHT; row++){
             for(int column = 1; column <= Simulation.MAP_WIDTH; column++){
-                Entity entity = gameMap.getEntity(row, column);
+                Cell cell = new Cell(row, column);
+                Entity entity = gameMap.getEntity(cell);
                 mapState.append(getSprite(entity));
             }
             mapState.append("\n");
