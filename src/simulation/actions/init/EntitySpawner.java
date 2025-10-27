@@ -1,6 +1,7 @@
 package simulation.actions.init;
 
 import simulation.Simulation;
+import simulation.SimulationFactory;
 import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
 import simulation.map.Cell;
@@ -23,7 +24,7 @@ public class EntitySpawner extends InitAction {
     }
 
     private int getEntityCount(int percent){
-        int count = (int) ((percent / 100.0) * Simulation.MAP_SIZE);
+        int count = (int) ((percent / 100.0) * gameMap.getMapSize());
         if(count < 1 && percent != 0) {
             count = 1;
         }
@@ -48,12 +49,12 @@ public class EntitySpawner extends InitAction {
         for(Integer count : entityCounts.values()){
             entitiesCount += count;
         }
-        return entitiesCount <= Simulation.MAP_SIZE;
+        return entitiesCount <= gameMap.getMapSize();
     }
 
     private void fillCellsList(List<Cell> cells){
-        for(int row = 1; row <= Simulation.MAP_HEIGHT; row++){
-            for(int column = 1; column <= Simulation.MAP_WIDTH; column++){
+        for(int row = 1; row <= gameMap.getMapHeight(); row++){
+            for(int column = 1; column <= gameMap.getMapWidth(); column++){
                 Cell cell = new Cell(row, column);
                 cells.add(cell);
             }

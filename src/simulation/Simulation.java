@@ -29,12 +29,12 @@ public class Simulation implements MainMenuHandler {
     private final GameOutput gameOutput;
     private final UserInput userInput;
 
-    public Simulation(GameOutput gameOutput, UserInput userInput, GameMap gameMap) {
+    public Simulation(GameOutput gameOutput, UserInput userInput, GameMap gameMap, EntityFactory entityFactory) {
         this.gameOutput = gameOutput;
         this.userInput = userInput;
-        this.entityFactory = new EntityFactory();;
+        this.entityFactory = entityFactory;
         this.gameMap = gameMap;
-        this.renderer = new ConsoleRenderer();
+        this.renderer = new ConsoleRenderer(gameMap);
         initActions.add(new EntitySpawner(gameMap, entityFactory));
         executeActions(initActions);
     }

@@ -12,7 +12,8 @@ public class Main {
     public static void main(String[] args) {
         GameOutput gameOutput = new ConsoleOutput();
         UserInput userInput = new ConsoleInput();
-        Simulation simulation = new Simulation(gameOutput, userInput);
+        SimulationFactory simulationFactory = new SimulationFactory(gameOutput, userInput);
+        Simulation simulation = simulationFactory.create();
         MainMenu mainMenu = new MainMenu(gameOutput, userInput, simulation);
         while(true){
             mainMenu.show();

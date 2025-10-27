@@ -8,13 +8,19 @@ import simulation.render.Renderer;
 
 
 public class ConsoleRenderer implements Renderer {
-    private final String border = "=".repeat(Simulation.MAP_WIDTH * 3);
+    private final GameMap gameMap;
+    private final String border;
+
+    public ConsoleRenderer(GameMap gameMap) {
+        this.gameMap = gameMap;
+        this.border = "=".repeat( gameMap.getMapWidth() * 3);
+    };
 
     @Override
     public void render(GameMap gameMap) {
         StringBuilder mapState = new StringBuilder();
-        for(int row = 1; row <= Simulation.MAP_HEIGHT; row++){
-            for(int column = 1; column <= Simulation.MAP_WIDTH; column++){
+        for(int row = 1; row <= gameMap.getMapHeight(); row++){
+            for(int column = 1; column <= gameMap.getMapWidth(); column++){
                 Cell cell = new Cell(row, column);
                 Entity entity = gameMap.getEntity(cell);
                 mapState.append(getSprite(entity));
