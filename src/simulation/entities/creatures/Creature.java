@@ -6,10 +6,12 @@ import simulation.entities.EntityType;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public abstract class Creature extends Entity {
+    private static final boolean CREATURE_PASSABILITY = false;
     protected int healthPoints;
     protected final List<EntityType> targetEntities;
-    private static final boolean CREATURE_PASSABILITY = false;
+
     Creature(){
         super(CREATURE_PASSABILITY);
         this.targetEntities = new ArrayList<>();

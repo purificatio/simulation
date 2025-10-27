@@ -1,6 +1,7 @@
 package simulation.map;
 
 import simulation.Simulation;
+import simulation.SimulationFactory;
 import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
@@ -12,9 +13,15 @@ import java.util.Map;
 public class GameMap {
     private final Map<Cell, Entity> gameMap;
     private final EntityFactory entityFactory;
-    public GameMap(Map<Cell, Entity> gameMap, EntityFactory entityFactory){
+    private final int mapHeight;
+    private final int mapWidth;
+    private final int mapSize;
+    public GameMap(Map<Cell, Entity> gameMap, EntityFactory entityFactory, int mapHeight, int mapWidth){
         this.gameMap = gameMap;
         this.entityFactory = entityFactory;
+        this.mapHeight = mapHeight;
+        this.mapWidth = mapWidth;
+        mapSize = mapWidth * mapHeight;
     }
 
     public void setEntity(Cell cell, Entity entity){
@@ -34,7 +41,7 @@ public class GameMap {
         }
         Entity entity = getEntity(from);
         setEntity(to, entity);
-        setEntity(from, entityFactory.createEntity(Simulation.DEFAULT_ENTITY_TYPE));
+        setEntity(from, entityFactory.createEntity(SimulationFactory.DEFAULT_ENTITY_TYPE));
     }
 
     public List<Cell> getEntityPositions(List<EntityType> targetEntities){
@@ -50,5 +57,17 @@ public class GameMap {
             }
         }
         return positions;
+    }
+
+    public int getMapHeight() {
+        return mapHeight;
+    }
+
+    public int getMapWidth() {
+        return mapWidth;
+    }
+
+    public int getMapSize() {
+        return mapSize;
     }
 }

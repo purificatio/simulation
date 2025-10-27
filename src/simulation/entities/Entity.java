@@ -1,5 +1,6 @@
 package simulation.entities;
 
+
 public abstract class Entity {
     private final boolean passability;
 

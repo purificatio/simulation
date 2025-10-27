@@ -5,13 +5,13 @@ import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
 import simulation.map.Cell;
 import simulation.map.GameMap;
-
 import java.util.*;
 
+
 public class EntitySpawner extends InitAction {
-    Map<EntityType, Integer> entityCounts = new LinkedHashMap<>();
+    private final Map<EntityType, Integer> entityCounts = new LinkedHashMap<>();
     private final Random random = new Random();
-    List<Cell> cells = new ArrayList<>();
+    private final List<Cell> cells = new ArrayList<>();
 
     public EntitySpawner(GameMap gameMap, EntityFactory entityFactory) {
         super(gameMap, entityFactory);
@@ -36,8 +36,10 @@ public class EntitySpawner extends InitAction {
             throw new IllegalStateException("Not enough map size to place entities");
         }
         fillCellsList(cells);
-        for(Map.Entry<EntityType, Integer> entityCount : entityCounts.entrySet()){
-            spawn(entityCount.getKey(), entityCount.getValue());
+        for(Map.Entry<EntityType, Integer> entityTypeCount : entityCounts.entrySet()){
+            EntityType entityType = entityTypeCount.getKey();
+            int entityCount = entityTypeCount.getValue();
+            spawn(entityType,entityCount);
         }
     }
 

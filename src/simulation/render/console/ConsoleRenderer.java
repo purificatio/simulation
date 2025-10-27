@@ -6,8 +6,10 @@ import simulation.Simulation;
 import simulation.entities.Entity;
 import simulation.render.Renderer;
 
+
 public class ConsoleRenderer implements Renderer {
     private final String border = "=".repeat(Simulation.MAP_WIDTH * 3);
+
     @Override
     public void render(GameMap gameMap) {
         StringBuilder mapState = new StringBuilder();

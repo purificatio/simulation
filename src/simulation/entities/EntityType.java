@@ -6,6 +6,7 @@ import simulation.entities.supplies.Grass;
 import simulation.entities.terrainobjects.Rock;
 import simulation.entities.terrainobjects.Tree;
 
+
 public enum EntityType {
     HERBIVORE(Herbivore.class),
     PREDATOR(Predator.class),
@@ -13,6 +14,7 @@ public enum EntityType {
     TREE(Tree.class),
     GRASS(Grass.class),
     NOTHING(Nothing.class);
+
     private final Class<?> entityClass;
 
     EntityType(Class<?> entityClass) {
