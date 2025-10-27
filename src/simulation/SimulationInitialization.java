@@ -9,13 +9,13 @@ import simulation.output.GameOutput;
 import java.io.IOException;
 
 
-public class SimulationFactory {
+public class SimulationInitialization {
     private final EntityFactory entityFactory = new EntityFactory();
     private final GameOutput gameOutput;
     private final UserInput userInput;
     public static final EntityType DEFAULT_ENTITY_TYPE = EntityType.NOTHING;
 
-    public SimulationFactory(GameOutput gameOutput, UserInput userInput) {
+    public SimulationInitialization(GameOutput gameOutput, UserInput userInput) {
         this.gameOutput = gameOutput;
         this.userInput = userInput;
     }

@@ -1,7 +1,5 @@
 package simulation.actions.init;
 
-import simulation.Simulation;
-import simulation.SimulationFactory;
 import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
 import simulation.map.Cell;

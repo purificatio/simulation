@@ -1,7 +1,6 @@
 package simulation.map;
 
-import simulation.Simulation;
-import simulation.SimulationFactory;
+import simulation.SimulationInitialization;
 import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
@@ -41,7 +40,7 @@ public class GameMap {
         }
         Entity entity = getEntity(from);
         setEntity(to, entity);
-        setEntity(from, entityFactory.createEntity(SimulationFactory.DEFAULT_ENTITY_TYPE));
+        setEntity(from, entityFactory.createEntity(SimulationInitialization.DEFAULT_ENTITY_TYPE));
     }
 
     public List<Cell> getEntityPositions(List<EntityType> targetEntities){
