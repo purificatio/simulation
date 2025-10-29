@@ -14,12 +14,12 @@ import static simulation.output.GameOutput.INCORRECT_USER_INPUT_MESSAGE;
 public abstract class GameMenu {
     protected final GameOutput gameOutput;
     protected final UserInput userInput;
-    private final MainMenuHandler chooseHandler;
+    private final ChooseHandler chooseHandler;
     protected final List<Item> menuItems = new ArrayList<>();
     private static final int START_ID = 1;
     private int lastId = START_ID;
 
-    public GameMenu(GameOutput gameOutput, UserInput userInput, MainMenuHandler chooseHandler) {
+    public GameMenu(GameOutput gameOutput, UserInput userInput, ChooseHandler chooseHandler) {
         this.gameOutput = gameOutput;
         this.userInput = userInput;
         this.chooseHandler = chooseHandler;

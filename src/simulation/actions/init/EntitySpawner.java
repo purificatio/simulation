@@ -64,7 +64,7 @@ public class EntitySpawner extends InitAction {
         while(iteration != count) {
             int cellIndex = random.nextInt(cells.size());
             Cell cell = cells.get(cellIndex);
-            gameMap.setEntity(cell, entityFactory.createEntity(entityType));
+            gameMap.placeEntity(cell, entityFactory.createEntity(entityType));
             cells.remove(cellIndex);
             iteration++;
         }

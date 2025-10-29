@@ -21,8 +21,8 @@ public class SimulationInitialization {
     }
 
     public Simulation create(){
-        int columns = 0;
-        int rows = 0;
+        int columns;
+        int rows;
         while(true) {
             try {
                 gameOutput.showMessage("Введите желаемое количество колонок: ");

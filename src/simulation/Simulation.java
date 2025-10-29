@@ -5,13 +5,17 @@ import simulation.actions.Action;
 import simulation.actions.init.EntitySpawner;
 import simulation.actions.init.InitAction;
 import simulation.actions.turn.TurnAction;
+import simulation.entities.Entity;
 import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
+import simulation.entities.creatures.Creature;
 import simulation.input.UserInput;
+import simulation.map.Cell;
 import simulation.map.GameMap;
 import simulation.map.MapGeneration;
 import simulation.menu.main.MainMenuHandler;
 import simulation.output.GameOutput;
+import simulation.pathfinding.Bfs;
 import simulation.render.console.ConsoleRenderer;
 import simulation.render.Renderer;
 
