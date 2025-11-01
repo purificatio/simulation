@@ -49,4 +49,15 @@ public class GameMapUtils {
         }
         return positions;
     }
+
+    public List<Creature> getAllCreatures(){
+        List<Creature> creatures = new ArrayList<>();
+        Map<Entity, Cell> entityCellMap = gameMap.getEntityCellGameMap();
+        for (Entity entity : entityCellMap.keySet()) {
+            if(entity instanceof Creature){
+                creatures.add((Creature) entity);
+            }
+        }
+        return creatures;
+    }
 }

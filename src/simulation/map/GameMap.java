@@ -51,6 +51,11 @@ public class GameMap {
         placeEntity(from, entityFactory.createEntity(SimulationInitialization.DEFAULT_ENTITY_TYPE));
     }
 
+    public void destroyEntity(Entity entity){
+        Cell entityCell = entityCellGameMap.get(entity);
+        placeEntity(entityCell, entityFactory.createEntity(SimulationInitialization.DEFAULT_ENTITY_TYPE));
+    }
+
     public List<Cell> getNeighbors(Cell cell){
         List<Cell> neighbors = new ArrayList<>();
         int[][] directions = {

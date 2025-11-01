@@ -50,7 +50,6 @@ public class Simulation implements MainMenuHandler {
 
     @Override
     public void startInfinitySimulation(){
-        renderer.render(gameMap);
     }
 
     public void pauseInfinitySimulation(){
@@ -59,6 +58,7 @@ public class Simulation implements MainMenuHandler {
 
     @Override
     public void nextTurn() {
+        executeActions(turnActions);
     }
 
     @Override
