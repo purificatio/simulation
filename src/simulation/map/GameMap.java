@@ -51,19 +51,23 @@ public class GameMap {
         placeEntity(from, entityFactory.createEntity(SimulationInitialization.DEFAULT_ENTITY_TYPE));
     }
 
-    public List<Cell> getEntityPositions(List<EntityType> targetEntities){
-        List<Cell> positions = new ArrayList<>();
-        for(Map.Entry<Cell, Entity> cellEntityEntry : cellEntityGameMap.entrySet()){
-            Entity entity = cellEntityEntry.getValue();
-            for(EntityType entityType : targetEntities) {
-                Class<?> entityClass = entityType.getEntityClass();
-                if (entityClass.isInstance(entity)){
-                    positions.add(cellEntityEntry.getKey());
-                    break;
-                }
+    public List<Cell> getNeighbors(Cell cell){
+        List<Cell> neighbors = new ArrayList<>();
+        int[][] directions = {
+                {0, -1}, // Лево
+                {0, 1}, // Право
+                {1, 0}, // Вверх
+                {-1, 0} // Вниз
+        };
+        int row = cell.row();
+        int column = cell.column();
+        for(int[] direction : directions){
+            Cell neighbor = new Cell(row + direction[0], column + direction[1]);
+            if(cellEntityGameMap.containsKey(neighbor)){
+                neighbors.add(neighbor);
             }
         }
-        return positions;
+        return neighbors;
     }
 
     public int getMapHeight() {

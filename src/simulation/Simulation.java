@@ -12,16 +12,19 @@ import simulation.entities.creatures.Creature;
 import simulation.input.UserInput;
 import simulation.map.Cell;
 import simulation.map.GameMap;
+import simulation.map.GameMapUtils;
 import simulation.map.MapGeneration;
 import simulation.menu.main.MainMenuHandler;
 import simulation.output.GameOutput;
 import simulation.pathfinding.Bfs;
+import simulation.pathfinding.PathFinder;
 import simulation.render.console.ConsoleRenderer;
 import simulation.render.Renderer;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 public class Simulation implements MainMenuHandler {
@@ -32,13 +35,15 @@ public class Simulation implements MainMenuHandler {
     private final List<TurnAction> turnActions = new ArrayList<>();
     private final GameOutput gameOutput;
     private final UserInput userInput;
+    private final GameMapUtils gameMapUtils;
 
-    public Simulation(GameOutput gameOutput, UserInput userInput, GameMap gameMap, EntityFactory entityFactory) {
+    public Simulation(GameOutput gameOutput, UserInput userInput, GameMap gameMap, EntityFactory entityFactory, GameMapUtils gameMapUtils) {
         this.gameOutput = gameOutput;
         this.userInput = userInput;
         this.entityFactory = entityFactory;
         this.gameMap = gameMap;
         this.renderer = new ConsoleRenderer(gameMap);
+        this.gameMapUtils = gameMapUtils;
         initActions.add(new EntitySpawner(gameMap, entityFactory));
         executeActions(initActions);
     }
@@ -53,8 +58,7 @@ public class Simulation implements MainMenuHandler {
     }
 
     @Override
-    public void nextTurn(){
-
+    public void nextTurn() {
     }
 
     @Override

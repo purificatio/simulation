@@ -4,8 +4,12 @@ import simulation.entities.EntityFactory;
 import simulation.entities.EntityType;
 import simulation.input.UserInput;
 import simulation.map.GameMap;
+import simulation.map.GameMapUtils;
 import simulation.map.MapGeneration;
 import simulation.output.GameOutput;
+import simulation.pathfinding.Bfs;
+import simulation.pathfinding.PathFinder;
+
 import java.io.IOException;
 
 
@@ -31,7 +35,8 @@ public class SimulationInitialization {
                 rows = userInput.getInteger();
                 MapGeneration mapGeneration = new MapGeneration(entityFactory, rows, columns);
                 GameMap gameMap = mapGeneration.generate();
-                return new Simulation(gameOutput, userInput, gameMap, entityFactory);
+                GameMapUtils gameMapUtils = new GameMapUtils(gameMap);
+                return new Simulation(gameOutput, userInput, gameMap, entityFactory, gameMapUtils);
             } catch (IOException e) {
                 gameOutput.showMessage(GameOutput.INCORRECT_USER_INPUT_MESSAGE);
             }
