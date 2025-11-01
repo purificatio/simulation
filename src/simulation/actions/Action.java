@@ -10,7 +10,7 @@ public abstract class Action {
     public Action(GameMap gameMap, EntityFactory entityFactory){
         this.gameMap = gameMap;
         this.entityFactory = entityFactory;
-    };
+    }
 
     public abstract void execute();
 }

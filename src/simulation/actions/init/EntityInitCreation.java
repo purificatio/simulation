@@ -7,12 +7,12 @@ import simulation.map.GameMap;
 import java.util.*;
 
 
-public class EntitySpawner extends InitAction {
+public class EntityInitCreation extends InitAction {
     private final Map<EntityType, Integer> entityCounts = new LinkedHashMap<>();
     private final Random random = new Random();
     private final List<Cell> cells = new ArrayList<>();
 
-    public EntitySpawner(GameMap gameMap, EntityFactory entityFactory) {
+    public EntityInitCreation(GameMap gameMap, EntityFactory entityFactory) {
         super(gameMap, entityFactory);
         entityCounts.put(EntityType.HERBIVORE, getEntityCount(EntityPercent.HERBIVORE.getPercent()));
         entityCounts.put(EntityType.PREDATOR, getEntityCount(EntityPercent.PREDATOR.getPercent()));
@@ -38,7 +38,7 @@ public class EntitySpawner extends InitAction {
         for(Map.Entry<EntityType, Integer> entityTypeCount : entityCounts.entrySet()){
             EntityType entityType = entityTypeCount.getKey();
             int entityCount = entityTypeCount.getValue();
-            spawn(entityType,entityCount);
+            create(entityType,entityCount);
         }
     }
 
@@ -59,7 +59,7 @@ public class EntitySpawner extends InitAction {
         }
     }
 
-    private void spawn(EntityType entityType, int count){
+    private void create(EntityType entityType, int count){
         int iteration = 0;
         while(iteration != count) {
             int cellIndex = random.nextInt(cells.size());

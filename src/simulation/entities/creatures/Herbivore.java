@@ -1,6 +1,5 @@
 package simulation.entities.creatures;
 
-import simulation.entities.Entity;
 import simulation.entities.EntityType;
 import simulation.entities.supplies.Supply;
 import simulation.map.Cell;
@@ -21,7 +20,7 @@ public class Herbivore extends Creature{
     protected void interactWithTarget(Cell targetCell, GameMap gameMap) {
         Supply target = (Supply) gameMap.getEntity(targetCell);
         Cell herbivoreCell = gameMap.getCell(this);
-        gameMap.destroyEntity(target);
+        gameMap.removeEntity(target);
         healthPoints++;
         gameMap.moveEntity(herbivoreCell, targetCell);
     }

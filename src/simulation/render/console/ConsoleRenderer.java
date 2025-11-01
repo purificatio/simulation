@@ -6,10 +6,13 @@ import simulation.Simulation;
 import simulation.entities.Entity;
 import simulation.render.Renderer;
 
+import java.util.Map;
+
 
 public class ConsoleRenderer implements Renderer {
     private final GameMap gameMap;
     private final String border;
+    private final static Sprites NOTHING_SPRITE = Sprites.NOTHING;
 
     public ConsoleRenderer(GameMap gameMap) {
         this.gameMap = gameMap;
@@ -19,9 +22,14 @@ public class ConsoleRenderer implements Renderer {
     @Override
     public void render(GameMap gameMap) {
         StringBuilder mapState = new StringBuilder();
+        Map<Cell, Entity> cellEntityMap = gameMap.getCellEntityGameMap();
         for(int row = 1; row <= gameMap.getMapHeight(); row++){
             for(int column = 1; column <= gameMap.getMapWidth(); column++){
                 Cell cell = new Cell(row, column);
+                if(!cellEntityMap.containsKey(cell)){
+                    mapState.append(NOTHING_SPRITE);
+                    continue;
+                }
                 Entity entity = gameMap.getEntity(cell);
                 mapState.append(getSprite(entity));
             }
@@ -33,9 +41,6 @@ public class ConsoleRenderer implements Renderer {
 
     public Sprites getSprite(Entity entity) {
         switch (entity.getClass().getSimpleName()){
-            case ("Nothing") -> {
-                return Sprites.NOTHING;
-            }
             case ("Herbivore") -> {
                 return Sprites.HERBIVORE;
             }

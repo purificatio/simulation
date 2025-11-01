@@ -13,6 +13,7 @@ public class Main {
         UserInput userInput = new ConsoleInput();
         SimulationInitialization simulationInitialization = new SimulationInitialization(gameOutput, userInput);
         Simulation simulation = simulationInitialization.create();
+        simulation.showGameMap();
         MainMenu mainMenu = new MainMenu(gameOutput, userInput, simulation);
         while(true){
             mainMenu.show();

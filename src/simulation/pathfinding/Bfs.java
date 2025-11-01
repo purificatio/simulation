@@ -38,7 +38,7 @@ public class Bfs implements PathFinder {
             visited.add(current);
             List<Cell> neighbors = gameMap.getNeighbors(current);
             for(Cell neighbor : neighbors){
-                if(!visited.contains(neighbor) && (gameMap.getEntity(neighbor).isPassability() || neighbor.equals(target))){
+                if(!visited.contains(neighbor) && (!gameMap.getCellEntityGameMap().containsKey(neighbor) || neighbor.equals(target))){
                     cellQueue.add(neighbor);
                     visited.add(neighbor);
                     cellParent.put(neighbor, current);

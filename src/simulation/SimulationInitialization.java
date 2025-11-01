@@ -1,15 +1,10 @@
 package simulation;
 
 import simulation.entities.EntityFactory;
-import simulation.entities.EntityType;
 import simulation.input.UserInput;
 import simulation.map.GameMap;
 import simulation.map.GameMapUtils;
-import simulation.map.MapGeneration;
 import simulation.output.GameOutput;
-import simulation.pathfinding.Bfs;
-import simulation.pathfinding.PathFinder;
-
 import java.io.IOException;
 
 
@@ -17,7 +12,6 @@ public class SimulationInitialization {
     private final EntityFactory entityFactory = new EntityFactory();
     private final GameOutput gameOutput;
     private final UserInput userInput;
-    public static final EntityType DEFAULT_ENTITY_TYPE = EntityType.NOTHING;
 
     public SimulationInitialization(GameOutput gameOutput, UserInput userInput) {
         this.gameOutput = gameOutput;
@@ -33,8 +27,7 @@ public class SimulationInitialization {
                 columns = userInput.getInteger();
                 gameOutput.showMessage("Введите желаемое количество строк: ");
                 rows = userInput.getInteger();
-                MapGeneration mapGeneration = new MapGeneration(entityFactory, rows, columns);
-                GameMap gameMap = mapGeneration.generate();
+                GameMap gameMap = new GameMap(rows, columns);
                 GameMapUtils gameMapUtils = new GameMapUtils(gameMap);
                 return new Simulation(gameOutput, userInput, gameMap, entityFactory, gameMapUtils);
             } catch (IOException e) {

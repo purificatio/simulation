@@ -45,7 +45,7 @@ public abstract class Creature extends Entity {
         }
         this.healthPoints -= damageAmount;
         if(this.healthPoints <= 0){
-            gameMap.destroyEntity(this);
+            gameMap.removeEntity(this);
         }
     }
 

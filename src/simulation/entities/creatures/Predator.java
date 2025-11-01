@@ -7,7 +7,7 @@ import simulation.map.GameMap;
 
 public class Predator extends Creature{
     private static final int DEFAULT_PREDATOR_HEALTH_POINTS = 4;
-    private static final int DEFAULT_PREDATOR_DAMAGE = 2;
+    private static final int DEFAULT_PREDATOR_DAMAGE = 1;
     private static final int DEFAULT_PREDATOR_STEP_LENGTH = 2;
     private int damage;
 

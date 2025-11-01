@@ -3,8 +3,8 @@ package simulation.actions.init;
 public enum EntityPercent {
     HERBIVORE(10),
     PREDATOR(5),
-    GRASS(10),
-    ROCK(5),
+    GRASS(5),
+    ROCK(10),
     TREE(5);
 
     private final int percent;

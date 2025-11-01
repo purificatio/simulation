@@ -35,7 +35,7 @@ public class GameMapUtils {
         return closestTargets;
     }
 
-    public List<Cell> getEntityPositions(List<EntityType> targetEntities){
+    private List<Cell> getEntityPositions(List<EntityType> targetEntities){
         List<Cell> positions = new ArrayList<>();
         for(Map.Entry<Cell, Entity> cellEntityEntry : gameMap.getCellEntityGameMap().entrySet()){
             Entity entity = cellEntityEntry.getValue();
@@ -50,14 +50,38 @@ public class GameMapUtils {
         return positions;
     }
 
-    public List<Creature> getAllCreatures(){
-        List<Creature> creatures = new ArrayList<>();
+    public List<Entity> getAllEntitiesByType(EntityType entityType){
+        List<Entity> entities = new ArrayList<>();
         Map<Entity, Cell> entityCellMap = gameMap.getEntityCellGameMap();
         for (Entity entity : entityCellMap.keySet()) {
-            if(entity instanceof Creature){
-                creatures.add((Creature) entity);
+            if(entityType.getEntityClass().isInstance(entity)){
+                entities.add(entity);
             }
         }
-        return creatures;
+        return entities;
+    }
+
+    public int getEntityCountByType(EntityType entityType){
+        Map<Entity, Cell> entityCellMap = gameMap.getEntityCellGameMap();
+        int count = 0;
+        for(Entity entity : entityCellMap.keySet()){
+            if(entity.getClass() == entityType.getEntityClass()){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public List<Cell> getFreeCells(){
+        List<Cell> freeCells = new ArrayList<>();
+        for(int row = 1; row <= gameMap.getMapHeight(); row++){
+            for(int column = 1; column <= gameMap.getMapWidth(); column++){
+                Cell cell = new Cell(row, column);
+                if(!gameMap.getCellEntityGameMap().containsKey(cell)){
+                    freeCells.add(cell);
+                }
+            }
+        }
+        return freeCells;
     }
 }

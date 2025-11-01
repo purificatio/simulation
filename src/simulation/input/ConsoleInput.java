@@ -15,4 +15,13 @@ public class ConsoleInput implements UserInput{
         }
         return Integer.parseInt(userInput);
     }
+
+    @Override
+    public char getChar() throws IOException {
+        String userInput = scanner.nextLine();
+        if(!userInput.matches("^[A-Za-z]$")){
+            throw new IOException("Incorrect input by user, user entered: " + userInput);
+        }
+        return userInput.charAt(0);
+    }
 }
