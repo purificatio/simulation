@@ -1,6 +1,5 @@
 package simulation;
 
-
 import simulation.actions.Action;
 import simulation.actions.init.EntityInitCreation;
 import simulation.actions.init.InitAction;

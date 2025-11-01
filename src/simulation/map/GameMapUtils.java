@@ -3,8 +3,8 @@ package simulation.map;
 import simulation.entities.Entity;
 import simulation.entities.EntityType;
 import simulation.entities.creatures.Creature;
-
 import java.util.*;
+
 
 public class GameMapUtils {
     private final GameMap gameMap;

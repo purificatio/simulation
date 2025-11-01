@@ -1,18 +1,18 @@
 package simulation.map;
 
 import simulation.entities.Entity;
-import simulation.entities.EntityFactory;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 
 public class GameMap {
     private final Map<Cell, Entity> cellEntityGameMap = new HashMap<>();
     private final Map<Entity, Cell> entityCellGameMap = new HashMap<>();
     private final int mapHeight;
     private final int mapWidth;
+
     public GameMap(int mapHeight, int mapWidth){
         this.mapHeight = mapHeight;
         this.mapWidth = mapWidth;

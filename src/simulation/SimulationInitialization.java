@@ -18,7 +18,7 @@ public class SimulationInitialization {
         this.userInput = userInput;
     }
 
-    public Simulation create(){
+    public Simulation init(){
         int columns;
         int rows;
         while(true) {

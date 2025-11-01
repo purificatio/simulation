@@ -1,12 +1,10 @@
 package simulation.menu;
 
 import simulation.input.UserInput;
-import simulation.menu.main.MainMenuHandler;
 import simulation.output.GameOutput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import static simulation.output.GameOutput.ASK_FOR_CHOOSE_MESSAGE;
 import static simulation.output.GameOutput.INCORRECT_USER_INPUT_MESSAGE;
 
